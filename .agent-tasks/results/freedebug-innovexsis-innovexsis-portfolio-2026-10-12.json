@@ -1,0 +1,15 @@
+{
+  "task_id": "freedebug-innovexsis-innovexsis-portfolio-2026-10-12",
+  "agent": "free-ai-debugger",
+  "status": "issues_found",
+  "summary": "1 findings (1 serious).",
+  "findings": [
+    {
+      "severity": "high",
+      "file": "src/App.tsx",
+      "issue": "Import statements use the alias \"@\" (e.g., \"@/components/Layout\") but the Vite configuration does not define this alias, causing a module resolution error at runtime.",
+      "fix": "Either add an alias for \"@\" in vite.config.ts:\n```js\nimport { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\nimport { resolve } from 'path';\n\nexport default defineConfig({\n  plugins: [react()],\n  resolve: {\n    alias: {\n      '@': resolve(__dirname, 'src'),\n    },\n  },\n});\n```\nor change the imports to relative paths, e.g.:\n```tsx\nimport Layout from \"./components/Layout\";\nimport Home from \"./pages/Home\";\nimport Projects from \"./pages/Projects\";\nimport ProjectDetail from \"./pages/ProjectDetail\";\nimport About from \"./pages/About\";\nimport Contact from \"./pages/Contact\";\n```"
+    }
+  ],
+  "reviewed_at": "2026-10-12T20:20:46.556Z"
+}
